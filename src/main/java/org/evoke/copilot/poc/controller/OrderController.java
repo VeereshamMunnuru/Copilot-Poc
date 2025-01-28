@@ -4,6 +4,7 @@ import org.evoke.copilot.poc.model.Order;
 import org.evoke.copilot.poc.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 @RestController
@@ -13,13 +14,19 @@ public class OrderController {
     @Autowired
     private OrderService orderService;
 
-    @GetMapping
+    @GetMapping("/all")
     public List<Order> getAllOrders() {
         return orderService.getAllOrders();
     }
 
-    @PostMapping
+    @PostMapping("/create")
     public Order createOrder(@RequestBody Order order) {
         return orderService.createOrder(order);
     }
+
+    @GetMapping("/test")
+    public String test() {
+        return "Test is working fine";
+    }
+
 }
